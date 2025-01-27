@@ -14,7 +14,8 @@ module Api
             content: message.content,
             created_at: message.created_at,
             sender_username: message.sender_username,
-            receiver_username: message.receiver_username
+            receiver_username: message.receiver_username,
+            created_at: message.created_at.strftime("%Y-%m-%d %H:%M:%S")
           }
         }, status: :ok
       end
