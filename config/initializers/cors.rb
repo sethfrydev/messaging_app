@@ -4,6 +4,5 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     resource '*',
              headers: :any,
              methods: [:get, :post, :put, :patch, :delete, :options, :head]
-             credentials: Rails.env.production? # Only allow credentials in production
   end
 end
