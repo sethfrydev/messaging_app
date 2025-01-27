@@ -81,9 +81,10 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: messaging_app_production
-    username: messaging_app
-    password: <%= ENV["MESSAGING_APP_DATABASE_PASSWORD"] %>
+    url: <%= ENV['DATABASE_URL'] %>
+    # database: messaging_app_production
+    # username: messaging_app
+    # password: <%= ENV["MESSAGING_APP_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: messaging_app_production_cache
