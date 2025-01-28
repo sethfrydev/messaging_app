@@ -4,12 +4,12 @@ class ApplicationController < ActionController::API
   end
 
   def decoded_token
-    header = request.headers['Authorization']
+    header = request.headers["Authorization"]
     return nil unless header
 
-    token = header.split(' ')[1]
+    token = header.split(" ")[1]
     begin
-      JWT.decode(token, Rails.application.credentials.secret_key_base, true, algorithm: 'HS256')
+      JWT.decode(token, Rails.application.credentials.secret_key_base, true, algorithm: "HS256")
     rescue JWT::DecodeError
       nil
     end
@@ -18,11 +18,11 @@ class ApplicationController < ActionController::API
   def current_user
     return unless decoded_token
 
-    user_id = decoded_token[0]['user_id']
+    user_id = decoded_token[0]["user_id"]
     User.find_by(id: user_id)
   end
 
   def authenticate_user!
-    render json: { error: 'Unauthorized' }, status: :unauthorized unless current_user
+    render json: { error: "Unauthorized" }, status: :unauthorized unless current_user
   end
 end

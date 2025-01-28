@@ -8,7 +8,7 @@ module Api
           token = encode_token({ user_id: user.id })
           render json: { token: token, user: user.slice(:id, :username, :email) }, status: :ok
         else
-          render json: { error: 'Invalid credentials' }, status: :unauthorized
+          render json: { error: "Invalid credentials" }, status: :unauthorized
         end
       end
     end
